@@ -15,17 +15,6 @@ const rentalSchema = new mongoose.Schema({
     required: true,
     index: true // Adding an index for performance optimization
   },
-  // Rental start date
-  // from: {
-  //   type: Date,
-  //   required: true,
-  //   validate: {
-  //     validator: function(value) {
-  //       return value >= new Date();
-  //     },
-  //     message: 'Taken date should be a future date.'
-  //   }
-  // },
   from: {
     type: Date,
     required: true,
@@ -100,46 +89,7 @@ rentalSchema.pre('save', async function (next) {
   next();
 });
 
-
-
 // Create or reuse the Rental model
 module.exports =  mongoose.model('Rental', rentalSchema);
 
 
-
-
-
-// import mongoose from "mongoose";
-
-// const rentalSchema = new mongoose.Schema({
-//   customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
-//   carId: { type: mongoose.Schema.Types.ObjectId, ref: 'Car', required: true },
-//   from:{
-//     type: Date,
-//     required: true,
-//     validate: {
-//       validator: function(value) {
-//         return value >= new Date();
-//       },
-//       message: 'Taken date should be a future date.'
-//     }
-//   },
-//   to:{
-//     type: Date,
-//     required: true,
-//     validate: {
-//       validator: function(value) {
-//         return value >= new Date();
-//       },
-//       message: 'Return date should be a future date.'
-//     }
-//   },
-//   quantity: { type: Number, required: true },
-//   totalPrice: { type: Number, required: true },
-//   Notes: { type: String },
-//   isItPaid: { type: Boolean, default: false },
-//   status: { type: String, enum: ['open', 'close'], default: 'open' },
-//   orderDate: { type: Date, default: Date.now },
-// });
-
-// export const Order = mongoose.models.Order || mongoose.model('Rental', rentalSchema);

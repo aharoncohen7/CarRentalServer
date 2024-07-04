@@ -18,8 +18,7 @@ async function readCustomers(filter, isPopulate = true) {
     const customers = await query.exec();
     return customers;
 }
-
-
+// מידע שטוח עבור טבלאות
 async function readFlatCustomers(filter) {
     // Define the fields to include (only flat fields)
     const fieldsToSelect = '_id name email phone driverLicense registeredAt';
@@ -56,16 +55,3 @@ module.exports = {
     deleteCustomerById,
     readFlatCustomers
 }
-
-
-
-// async function readCustomers(filter, isPopulate = true) {
-//     const customers = await Customer.find(filter).populate(
-//         isPopulate ? ['rentalHistory', { path: 'rental.carId', }] : null);
-//     if (isPopulate) {
-//         for (let rental of rentals) {
-//             rental.rentalId = await Customer.findById(rental.customerId).select('name email phone');
-//         }
-//     }
-//     return customers;
-// }

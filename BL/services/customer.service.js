@@ -68,12 +68,14 @@ const updateCustomerService = async(id, data) => {
     return await updateCustomerById(id, data)
 }
 // Delete
-const deleteCustomerService = async(id) => {
-    // if (!driverLicense) throw "driverLicense is required";
-    // let customer = await getSingleCustomerService(driverLicense)
-    // if (!customer) throw "customer not found";
-    return await deleteCustomerById(customer.id)
-}
+const deleteCustomerService = async(id) => deleteCustomerById(id)
+
+// const deleteCustomerService = async(id) => {
+//     // if (!driverLicense) throw "driverLicense is required";
+//     // let customer = await getSingleCustomerService(driverLicense)
+//     // if (!customer) throw "customer not found";
+//     return await deleteCustomerById(id)
+// }
 
 module.exports = {
     createCustomerService,

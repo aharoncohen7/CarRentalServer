@@ -1,13 +1,12 @@
 const  { connectToMongo }   = require("./connectToMongo")
 require("dotenv").config()
 const express = require('express');
-// const mongoose = require('mongoose');
 const cors = require('cors');
 const carRoutes = require('./routes/carRoutes');
 const customerRouter = require('./routes/customerRouter');
 const rentalRouter = require('./routes/rentalRouter');
 const tableRouter = require('./routes/tableRouter');
-const { insertData } = require('../insertData')
+const { insertData } = require('./insertData')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,6 +17,7 @@ app.use(express.json());
 
 // Connect to MongoDB
 connectToMongo()
+// insert fake data in the first running 
 // insertData()
 
 // Routes

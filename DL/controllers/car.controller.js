@@ -29,7 +29,7 @@ const createCar = async (carData) => {
 }
 // Read
 const readCars = (filter) => Car.find(filter)
-
+// מידע שטוח עבור טבלאות
 async function readFlatCars(filter) {
     // Define the fields to include (only flat fields)
     const fieldsToSelect = '_id model year carLicense dailyRate isAvailable fuelType discount updatedAt';
@@ -37,9 +37,6 @@ async function readFlatCars(filter) {
     const customers = await Car.find(filter).select(fieldsToSelect);
     return customers;
 }
-
-
-
 const readCarById = (id) => Car.findById({ _id: id })
 const readCar = (filter) => Car.findOne(filter)
 // Update

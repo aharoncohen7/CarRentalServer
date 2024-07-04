@@ -6,22 +6,19 @@ const CustomerService = require('../BL/services/customer.service');
 // Add a new
 router.post('/create', async (req, res) => {
   try {
-      console.log(req.body)
-      const customer = await CustomerService.createCustomerService(req.body)
-      console.log({customer})
-      res.send(customer)
+    const customer = await CustomerService.createCustomerService(req.body)
+    res.send(customer)
   }
   catch (err) {
-      console.log({ err })
-      res.status(400).send(err)
+    console.log({ err })
+    res.status(400).send(err)
   }
 })
 
 // Get all 
-router.post('/', async (req , res) => {
+router.post('/', async (req, res) => {
   try {
-      console.log(req.body, '__❤❤____')
-      res.send(await CustomerService.getAllCustomersService(req.body))
+    res.send(await CustomerService.getAllCustomersService(req.body))
   }
   catch (err) {
     res.status(400).json({ message: err.message });
@@ -31,40 +28,38 @@ router.post('/', async (req , res) => {
 // Get single by unique key 
 router.get('/by-license/:driverLicense', async (req, res) => {
   try {
-      res.send(await CustomerService.getSingleCustomerService(req.params.driverLicense))
+    res.send(await CustomerService.getSingleCustomerService(req.params.driverLicense))
   }
   catch (err) {
-      res.status(400).send(err)
+    res.status(400).send(err)
   }
 })
 // Get single by id 
 router.get('/:id', async (req, res) => {
   try {
-      res.send(await CustomerService.readCustomerByIdService(req.params.id))
+    res.send(await CustomerService.readCustomerByIdService(req.params.id))
   }
   catch (err) {
-      res.status(400).send(err)
+    res.status(400).send(err)
   }
 })
 
 // update
 router.patch('/:id', async (req, res) => {
   try {
-      console.log(req.body)
-      const updatedCustomer = await CustomerService.updateCustomerService(req.params.id ,req.body)
-      // console.log({updatedCustomer})
-      res.send(updatedCustomer)
+    const updatedCustomer = await CustomerService.updateCustomerService(req.params.id, req.body)
+    res.send(updatedCustomer)
   }
   catch (err) {
-      console.log({ err })
-      res.status(400).send(err)
+    console.log({ err })
+    res.status(400).send(err)
   }
 })
 
 // delete 
-router.delete('/:id', async (req , res) => {
+router.delete('/:id', async (req, res) => {
   try {
-      res.send(await CustomerService.deleteCustomerService(req.params.id))
+    res.send(await CustomerService.deleteCustomerService(req.params.id))
   }
   catch (err) {
     res.status(400).json({ message: err.message });

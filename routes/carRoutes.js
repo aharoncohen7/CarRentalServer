@@ -6,9 +6,7 @@ const CarService = require('../BL/services/car.service');
 // Add a new
 router.post('/create', async (req, res) => {
   try {
-    console.log(req.body)
     const car = await CarService.createCarService(req.body)
-    console.log(car)
     res.send(car)
   }
   catch (err) {
@@ -50,9 +48,9 @@ router.get('/:id', async (req, res) => {
 // update
 router.patch('/:id', async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const updatedCar = await CarService.updateCarService(req.params.id, req.body)
-    console.log({updatedCar})
+    console.log(updatedCar);
     res.send(updatedCar)
   }
   catch (err) {

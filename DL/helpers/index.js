@@ -1,5 +1,4 @@
 
-
 function createColumn(
     key, 
     type, 
@@ -26,7 +25,6 @@ function createColumn(
   
   
   const carFieldsToSelect = '_id model year carLicense dailyRate isAvailable fuelType discount updatedAt';
-
   const carTableSchema = {
     name: 'cars',
     columns: [
@@ -45,7 +43,6 @@ function createColumn(
 
 
   const rentalFieldsToSelect = '_id customerId carId notes status isPaid quantity totalPrice orderDate';
-
   const rentalTableSchema = {
     name: 'rentals',
     columns: [
@@ -64,7 +61,6 @@ function createColumn(
 
 
 const getTableColumns = (tableName) => {
-
     if (tableName === 'customers') {
         return customerTableSchema;
     }
@@ -77,40 +73,7 @@ const getTableColumns = (tableName) => {
     return null;
 }
 
-// const sortData = (data, key, order = 'asc') => {
-//   if (key !== undefined) {
-//     return [...data].sort((a, b) => {
-//       const aValue = a[key] !== undefined ? a[key].toString().toLowerCase() : '';
-//       const bValue = b[key] !== undefined ? b[key].toString().toLowerCase() : '';
-
-//       if (aValue < bValue) return order === 'asc' ? -1 : 1;
-//       if (aValue > bValue) return order === 'asc' ? 1 : -1;
-//       return 0;
-//     });
-//   }
-//   console.log( "❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
-//   return data;
-// };
-
-
-// const sortData = (data, key, order = 'asc') => {
-//   if (key !== undefined) {
-//     console.log(`Sorting data by key: ${key}, order: ${order}`);
-//     return [...data].sort((a, b) => {
-//       const aValue = a[key] !== undefined ? a[key].toString().toLowerCase() : '';
-//       const bValue = b[key] !== undefined ? b[key].toString().toLowerCase() : '';
-      
-//       console.log(`Comparing ${aValue} with ${bValue}`);
-
-//       if (aValue < bValue) return order === 'asc' ? -1 : 1;
-//       if (aValue > bValue) return order === 'asc' ? 1 : -1;
-//       return 0;
-//     });
-//   }
-//   console.log('No key provided, returning original data');
-//   return data;
-// };
-
+// מיון מידע טבלאי
 const sortData = (data, key, order) => {
   if (key != undefined) {
       return [...data].sort((a, b) => {
@@ -119,10 +82,8 @@ const sortData = (data, key, order) => {
           return 0;
       });
   }
-
   return data;
 };
-
 
 
 // פונקציה לקבלת השעה במבנה של 00:00
@@ -149,10 +110,6 @@ function formatDateTime(dateTimeString) {
   const date = getDate(dateTimeString);
   return `${relativeDate}, ${date}, ${time}`;
 }
-
-
-
-
 
 
 module.exports = { getTableColumns, sortData, formatDateTime, getDate }

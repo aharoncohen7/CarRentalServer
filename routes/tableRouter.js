@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const carModel = require('../DL/models/car.model');
 const {getTableColumns} = require("../DL/helpers");
 const { getCarsForTable } = require('../BL/services/car.service');
 const { getCustomersForTable } = require('../BL/services/customer.service');
 const { getRentalSForTable } = require('../BL/services/rental.service');
 
+// עבור הגדרות הטבלה
 router.get('/:tableName', async (req, res) => {
   try {
     res.send(getTableColumns(req.params.tableName))
@@ -14,9 +14,10 @@ router.get('/:tableName', async (req, res) => {
     res.status(400).send(err)
   }
 })
+
+// עבור המידע בתצורת טבלה
 router.post('/:tableName', async (req, res) => {
   try {
-    
    
     if(req.params.tableName=="customers"){
       
@@ -27,7 +28,7 @@ router.post('/:tableName', async (req, res) => {
       res.send(await getCarsForTable(req.body))
     }
     if(req.params.tableName=="rentals"){
-      console.log("▶️▶️▶️▶️▶️▶️▶️▶️▶️▶️▶️▶️▶️▶️▶️");
+  
       res.send(await getRentalSForTable(req.body))
     }
 
@@ -45,16 +46,6 @@ router.post('/:tableName', async (req, res) => {
       res.status(400).send(err)
   }
 })
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
 

@@ -35,35 +35,26 @@ const getCarsForTable = async(filter) =>{
         else return { items: [], count: 0 }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 const readCarByIdService = (id) => readCarById(id)
 const readCarByFieldService = (filter) => readCar(filter)
 const getSingleCarService = (carLicense) => readCar({ carLicense })
 
 // Update
 const updateCarService = async(id, data) => {
-   //  if (!carLicense) throw "carLicense is required";
-   //  let car = await getSingleCarService(carLicense)
-   //  if (!car._id) throw "car not found";
-    return await updateCarById(id, data)
+    const updatedCar =  await updateCarById(id, data);
+    if (updatedCar._id) {
+        return await readCarById(id)
+    }
+    else return updatedCar
 }
+
 // Delete
-const deleteCarService = async(id) => {
+const deleteCarService = async(id) => deleteCarById(id)
    //  if (!carLicense) throw "carLicense is required";
    //  let car = await getSingleCarService(carLicense)
    //  if (!car) throw "car not found";
-    return deleteCarById(id)
-}
+    
+
 
 module.exports = {
     createCarService,
